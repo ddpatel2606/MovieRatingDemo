@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="day_night">#FFFFFF</color>
+    <color name="day_night_inverse">#000000</color>
+    <color name="start_color_shadow">#1FFFFFFF</color>
+</resources>

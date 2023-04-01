@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.SelectedIntentType" />
+
+        <variable
+            name="activity"
+            type="com.dixitpatel.movieratingdemo.feature_movie_rating.presentation.ui.seeall.SeeAllActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.dixitpatel.movieratingdemo.feature_movie_rating.presentation.ui.seeall.SeeAllViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{@color/day_night_inverse}"
+        tools:context=".presentation.ui.seeall.SeeAllActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                activity="@{activity}"
+                backArrowTint="@{@color/day_night_inverse}"
+                seeAllTitle="@{activity.title}"
+                titleTextColor="@{@color/day_night_inverse}"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@{@color/day_night_inverse}"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                hasFixedSize="@{activity.intentType == SelectedIntentType.LIST || activity.intentType == SelectedIntentType.SEARCH}"
+                isGrid="@{true}"
+                loadMore="@{viewModel::onLoadMore}"
+                shouldLoadMore="@{activity.intentType == SelectedIntentType.LIST || activity.intentType == SelectedIntentType.SEARCH}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/start_margin_small"
+                android:paddingEnd="@dimen/start_margin_small"
+                android:paddingTop="@dimen/top_margin_small"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                style="@style/Loading"
+                android:layout_gravity="center"
+                isVisible="@{viewModel.uiState.loading}" />
+
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

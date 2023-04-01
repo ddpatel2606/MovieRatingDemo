@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.data.constant.ConstKt" />
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.SelectedMediaType" />
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.SelectedIntentType" />
+
+        <variable
+            name="fragment"
+            type="com.dixitpatel.movieratingdemo.feature_movie_rating.presentation.ui.movielists.MovieListsFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.dixitpatel.movieratingdemo.feature_movie_rating.presentation.ui.movielists.MovieListsViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.movielists.MovieListsFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            isVisible="@{viewModel.uiState.success}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/bottom_margin_large">
+
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vpTrendings"
+                        isNested="@{true}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adapter="@{fragment.adapterTrending}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/vpTrendings"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                    <TextView
+                        style="@style/TitleDayNight"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_popular_movies" />
+
+                    <TextView
+                        android:id="@+id/tvSeeAllPopular"
+                        style="@style/SeeAll"
+                        intentType="@{SelectedIntentType.LIST}"
+                        mediaType="@{SelectedMediaType.MOVIE}"
+                        stringId="@{ConstKt.LIST_ID_POPULAR}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        title="@{@string/title_popular_movies}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPopular"
+                    style="@style/RecyclerView"
+                    fixedSize="@{true}"
+                    isNested="@{true}"
+                    loadMore="@{viewModel::onLoadMore}"
+                    shouldLoadMore="@{true}"
+                    type="@{ConstKt.LIST_ID_POPULAR}"
+                    android:adapter="@{fragment.adapterPopular}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                    <TextView
+                        style="@style/TitleDayNight"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/title_top_rated_movies" />
+
+                    <TextView
+                        android:id="@+id/tvSeeAllTopRated"
+                        style="@style/SeeAll"
+                        intentType="@{SelectedIntentType.LIST}"
+                        mediaType="@{SelectedMediaType.MOVIE}"
+                        stringId="@{ConstKt.LIST_ID_TOP_RATED}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        title="@{@string/title_top_rated_movies}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTopRated"
+                    style="@style/RecyclerView"
+                    fixedSize="@{true}"
+                    isNested="@{true}"
+                    loadMore="@{viewModel::onLoadMore}"
+                    shouldLoadMore="@{true}"
+                    type="@{ConstKt.LIST_ID_TOP_RATED}"
+                    android:adapter="@{fragment.adapterTopRated}" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            style="@style/Loading"
+            android:layout_gravity="center"
+            isVisible="@{viewModel.uiState.loading}"
+            android:indeterminate="true" />
+
+    </FrameLayout>
+
+</layout>

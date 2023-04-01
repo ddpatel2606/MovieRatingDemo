@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.ExtensionsKt" />
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.ImageQuality" />
+
+        <import type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.SelectedMediaType" />
+
+
+        <variable
+            name="tv"
+            type="com.dixitpatel.movieratingdemo.feature_movie_rating.domain.model.Tv" />
+
+    </data>
+
+    <FrameLayout
+        detailId="@{tv.id}"
+        detailMediaType="@{SelectedMediaType.TV}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+            fitTop="@{true}"
+            imageMediaType="@{SelectedMediaType.TV}"
+            imageQuality="@{ImageQuality.HIGH}"
+            imageUrl="@{tv.posterPath}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/trending_item_height"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shadow_gradient"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/bottom_padding_large"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="0.80"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/start_margin"
+                android:paddingTop="@dimen/trending_padding_top"
+                android:paddingEnd="@dimen/end_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{tv.name}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title_text_size_small"
+                    android:fontFamily="@font/poppins_medium"
+                    tools:text="TV Title" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{ExtensionsKt.formatDate(tv.firstAirDate)}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_text_size_small"
+                        tools:text="01 December, 2022" />
+
+                    <TextView
+                        rating="@{ExtensionsKt.round(tv.voteAverage)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/textview_drawable_padding"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title_text_size_small"
+                        app:drawableStartCompat="@drawable/ic_baseline_star_rate_18"
+                        tools:text="0.0" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/fabTrailer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="@dimen/end_margin_small"
+                android:layout_weight="0.10"
+                android:background="@color/light_black"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_play_arrow_48" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

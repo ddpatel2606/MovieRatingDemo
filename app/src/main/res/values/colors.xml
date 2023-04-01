@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="day_night">#000000</color>
+    <color name="light_black">#22000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="day_night_inverse">#FFFFFF</color>
+
+    <color name="four_to_five">#FFCC00</color>
+    <color name="two_to_three">#FF6600</color>
+    <color name="start_color_shadow">#1F000000</color>
+</resources>
