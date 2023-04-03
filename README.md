@@ -13,12 +13,12 @@
 - Dependency injection with [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - Consuming a REST API of [TMDB API](https://www.themoviedb.org/documentation/api)
 - Safe API call with [Retrofit](https://github.com/square/retrofit) & [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
-- Caching API response with [`OkHttpClient`](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/) from [`medium article`](https://medium.com/@bapspatil/caching-with-retrofit-store-responses-offline-71439ed32fda)
-- Observing data changes and updating the UI state with [`StateFlow`](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/)
-- Handling common view logic with [`BindingAdapter`](https://developer.android.com/topic/libraries/data-binding/binding-adapters)
-- Infinite scrolling with the help of `RecyclerView.OnScrollListener` (no paging library used)
+- Caching API response with [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/) from [medium article](https://medium.com/@bapspatil/caching-with-retrofit-store-responses-offline-71439ed32fda)
+- Observing data changes and updating the UI state with [StateFlow](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/)
+- Handling common view logic with [BindingAdapter](https://developer.android.com/topic/libraries/data-binding/binding-adapters)
+- Infinite scrolling with the help of RecyclerView.OnScrollListener (no paging library used)
 - [Stetho](https://github.com/facebook/stetho) to check API response directly on Brave web browser.
-- Used [Jetpack Compose](https://developer.android.com/jetpack/compose) in one of the module with [`Material 3 UI`](https://m3.material.io/develop/android/jetpack-compose)
+- Used [Jetpack Compose](https://developer.android.com/jetpack/compose) in one of the module with [Material 3 UI](https://m3.material.io/develop/android/jetpack-compose)
 - [Room Database](https://developer.android.com/training/data-storage/room)
 - [Jetpack](https://developer.android.com/jetpack) libraries
   - [Navigation](https://developer.android.com/guide/navigation) - Handling navigation between destinations within the app
@@ -60,34 +60,39 @@
 - sharedTest (directory act as bridge between unit and instrumentation tests. It contains files like Fake Hilt Modules, fake Repository, Hilt Test Runner)
 - test (Unittest cases Robolectric, Mockito and Hilt)
 
-The project separated into three main layers which covers (Separation of Concerns and Testability) 
+The project is structured into three distinct layers that have been designed to address concerns related to Separation of Concerns and Testability.
 - Data
 - Presentation
 - Domain
 
 ### Data
-Data layer contains application data that are fetched from either the network source or the local database.
-
-Consists of four packages:
-- `local` contains *Room* components to fetch data from the local database
-- `mapper` contains mapping functions to map Models data and database entities to domain models
-- `remote` contains *Retrofit* components to fetch data from the network source
-- `repository` contains **implementations** of repository interfaces that are defined in the domain layer
+The first layer is the Data layer, which is responsible for managing the application data that is fetched from either the network or the local database. 
+</br>This layer consists of four packages
+- `local` : The local package comprises the Room components that are used to fetch data from the local database.
+- `mapper` : The mapper package contains mapping functions to map the data retrieved from various sources to domain models.
+- `remote` : The remote package comprises the Retrofit components used to fetch data from the network source.
+- `repository` : The repository package contains the implementations of repository interfaces defined in the domain layer.
 
 ### Presentation
-Presentation layer is responsible for displaying application data on the screen. It contains  UI elements that render the data on the screen and ViewModel classes that store and manage data in a lifecycle-conscious way.
-
-Consists of two packages:
-- `adapter` contains RecyclerView & ViewPager2 adapter classes
-- `ui` contains Activities & Fragments with their corresponding ViewModel classes
+The second layer is the Presentation layer, which is responsible for rendering the application data on the screen. 
+</br>This layer consists of two packages
+- `adapter` :   The adapter package contains RecyclerView and ViewPager2 adapter classes
+- `ui` : The ui package comprises Activities and Fragments with their corresponding ViewModel classes.
 
 ### Domain
-Domain layer is the central layer of the project. This layer is a bridge between the data layer and the presentation layer-it retrieves data from the data layer and exposes it to the presentation layer. This layer is independent of other layers-any changes in other layers don't affect this layer.
+The third and central layer of the project is the Domain layer. 
+This layer acts as a bridge between the data and presentation layers, retrieving data from the former and exposing it to the latter. 
+The Domain layer is independent of other layers, which means that changes in other layers do not affect it. 
+</br>The Domain layer consists of three packages
+- `model` : The model package contains data classes that hold the data retrieved from the data layer, to be used later on in the presentation layer to expose it to the UI.
+- `repository` : The repository package contains repository interfaces that abstract the domain layer from the data layer.
+- `usecase` : The usecase package contains use cases that handle the business logic, which can be reused by multiple ViewModels.
 
-Consists of three packages:
-- `model` contains data classes that hold the data retrieved from the data layer to be used later on in the presentation layer to expose it to UI
-- `repository` contains repository **interfaces** to abstract the domain layer from the data layer
-- `usecase` contains use cases that handle the business logic, which are reused by multiple ViewModels
+
+## Demo Video 
+Youtube: https://youtu.be/-HLev0uGmlg
+[![Watch the video](https://www.freepnglogos.com/uploads/youtube-logo-transparent-10.png)](https://youtu.be/-HLev0uGmlg)
+
 
 ## Try the App
 Check out the [Releases](https://github.com/ddpatel2606/MovieRatingDemo/releases) and download & install the <a href="apk/app-debug.apk">APK file<a/> to try the app.
