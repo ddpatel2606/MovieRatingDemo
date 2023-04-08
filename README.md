@@ -9,7 +9,7 @@
 ### Tech stack & Open-source libraries
 - Minimum SDK level 26 to latest
 - Written in [Kotlin](https://kotlinlang.org/)
-- Implementing MVVM design pattern with Android Architecture Components by following [clean architecture principles](https://github.com/bbor98/movieapp-mvvm-clean-architecture#-note)
+- Implementing MVVM design pattern with Android Architecture Components by following clean architecture principles.
 - Dependency injection with [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - Consuming a REST API of [TMDB API](https://www.themoviedb.org/documentation/api)
 - Safe API call with [Retrofit](https://github.com/square/retrofit) & [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
