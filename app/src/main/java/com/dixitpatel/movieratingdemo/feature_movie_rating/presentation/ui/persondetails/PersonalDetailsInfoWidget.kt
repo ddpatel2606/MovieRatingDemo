@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,7 +19,6 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.dixitpatel.movieratingdemo.R
 import com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.ImageQuality
-import com.dixitpatel.movieratingdemo.feature_movie_rating.domain.utils.geErrorImageDrawable
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -80,7 +78,7 @@ fun PersonalDetailsInfoWidget(
             if (!placeOfBirth.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    stringResource(id = com.dixitpatel.movieratingdemo.R.string.place_of_birth),
+                    stringResource(id = R.string.place_of_birth),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
@@ -92,7 +90,7 @@ fun PersonalDetailsInfoWidget(
             if (!birthday.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    stringResource(id = com.dixitpatel.movieratingdemo.R.string.birthday),
+                    stringResource(id = R.string.birthday),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
@@ -104,7 +102,7 @@ fun PersonalDetailsInfoWidget(
             if (!knownDepartment.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    stringResource(id = com.dixitpatel.movieratingdemo.R.string.department),
+                    stringResource(id = R.string.department),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
@@ -116,7 +114,7 @@ fun PersonalDetailsInfoWidget(
             if (!gender.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    stringResource(id = com.dixitpatel.movieratingdemo.R.string.gender),
+                    stringResource(id = R.string.gender),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
@@ -128,7 +126,7 @@ fun PersonalDetailsInfoWidget(
             if (!biography.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    stringResource(id = com.dixitpatel.movieratingdemo.R.string.biography),
+                    stringResource(id = R.string.biography),
                     style = MaterialTheme.typography.h1
                 )
                 Text(
@@ -144,7 +142,7 @@ fun PersonalDetailsInfoWidget(
 @Composable
 fun PersonalDetailsInfoWidget() {
     PersonalDetailsInfoWidget(
-        imagePath = "https://image.tmdb.org/t/p/w780//rRdru6REr9i3WIHv2mntpcgxnoY.jpg",
+        imagePath = "https://image.tmdb.org/t/p/w780/rRdru6REr9i3WIHv2mntpcgxnoY.jpg",
         personName = "Star Wars",
         biography = "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
         birthday = "2021-08-15",

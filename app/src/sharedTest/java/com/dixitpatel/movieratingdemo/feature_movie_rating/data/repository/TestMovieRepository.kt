@@ -63,8 +63,8 @@ class TestMovieRepository @Inject constructor() : MovieRepository {
     }
 
     override suspend fun getPersonDetails(personId: Int): Resource<PersonDetail> {
-        return Resource.Success(PersonDetailModel("biography", "2033-23-23","1989-08-23",1,
-            "https://test.com",22,"Acting","m","India", "/wD2kUCX1Bb6oeIb2uz7kbdfLP6k.jpg"
+        return Resource.Success(PersonDetailModel("As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.", "1983-07-10","2028-08-15",1,
+            "https://test.com",22,"Acting","The Rock","India", "/rRdru6REr9i3WIHv2mntpcgxnoY.jpg"
             ).toPersonDetail())
     }
 
