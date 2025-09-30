@@ -36,7 +36,7 @@ object NetworkModule {
     @Named(INTERCEPTOR_FOR_REQUEST)
     fun provideRequestInterceptor(): Interceptor = Interceptor { chain ->
         val originalRequest = chain.request()
-        val originalUrl = originalRequest.url()
+        val originalUrl = originalRequest.url
 
         val url = originalUrl.newBuilder()
             .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
