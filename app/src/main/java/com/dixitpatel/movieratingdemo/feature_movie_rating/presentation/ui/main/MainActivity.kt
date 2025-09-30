@@ -2,6 +2,7 @@ package com.dixitpatel.movieratingdemo.feature_movie_rating.presentation.ui.main
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
